@@ -1,0 +1,128 @@
+{% load static %}
+
+<div class="card bg-white  h-100 rounded-3 border-0 shadow">
+    <div class="card-body mx-0">
+
+
+        <div class=" pl-3  bg-white shadow-none">
+            <div class=" text-secondary">{{chart.title}}
+                {% for d in chart.datasets %}
+
+                <span class="text-{{d.color}}">{{d.title}} /</span>
+                {% endfor %}
+            </div>
+
+            <div class="h4">
+                <span class="fs-1 material-icons text-primary icon-center me-2 ">
+                    {{chart.icon}}</span>{{chart.value}}
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    <canvas class="container-fluid mx-0" id="{{id}}"></canvas>
+
+</div>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+</style>
+
+<script>
+
+    function get_color(color, alpha = 1) {
+        var st = null
+
+        alpha = parseInt((alpha * parseInt('ff', 16))).toString(16)
+        hex = getStyleSheet('bootstrap').rules[0].style.getPropertyValue(`--bs-${color}`)
+        return `${hex}${alpha}`
+
+    }
+
+    function getStyleSheet(unique_title) {
+        for (var i = 0; i < document.styleSheets.length; i++) {
+            var sheet = document.styleSheets[i];
+            if (sheet.href && sheet.href.includes(unique_title)) {
+                return sheet;
+            }
+        }
+    }
+
+    function get_data_from_context(name) {
+        name = name.substring(1, name.length - 1).split(',')
+        return name
+    }
+
+    function parseArrayInt(arr) {
+        arr.forEach(element => {
+            return parseInt(element)
+        });
+        return arr
+    }
+
+    var ctx = document.getElementById('{{id}}').getContext('2d');
+
+
+    // The data for our dataset
+    var data = {
+
+
+        labels: get_data_from_context('{{chart.raw_labels}}'),
+        datasets: [
+
+            // {% for d in chart.datasets %}
+            {
+                backgroundColor: get_color('{{d.color}}', .3),
+                borderColor: get_color('{{d.color}}'),
+                data: parseArrayInt(get_data_from_context('{{d.raw_data}}')),
+
+            },
+            // {% endfor %}
+
+        ]
+    };
+
+
+    // Configuration options go here
+    var options = {
+        legend: { display: false },
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: false,
+
+                },
+                ticks: {
+                    display: false,
+
+                },
+
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: false,
+
+                },
+                ticks: {
+                    display: false,
+
+                },
+
+            }],
+
+
+        },
+
+    };
+
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options,
+    });
+</script>

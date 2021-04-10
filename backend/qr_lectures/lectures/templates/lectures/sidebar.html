@@ -1,0 +1,85 @@
+<div class="bg-white" id="sidebar-wrapper">
+    <div class="flex-column pt-3">
+
+        <div class="text-center">
+            <div style="font-size: 5rem;" class="material-icons text-secondary">school</div>
+        </div>
+
+        <div class="list-group list-group-flush pt-5 ">
+            <div class="container-fluid ">
+                <ul class="nav flex-column fixed">
+
+
+
+
+                    <li class="nav-item mb-1">
+                        {% if dashboard %}
+
+                        <a class="pb-3 h6 nav-link active bg-secondary text-white rounded mx-1"
+                            href="{% url 'dashboard' %}">
+                            <span class="material-icons text-white icon-center me-2">dashboard</span>Dashboard</a>
+
+                        {% else %}
+
+                        <a class="pb-3 h6 nav-link active bg-primary shadow text-white rounded mx-1"
+                            href="{% url 'dashboard' %}">
+                            <span class="material-icons text-white icon-center me-2">dashboard</span> Dashboard</a>
+
+                        {% endif %}
+                    </li>
+
+                    <li class="nav-item mb-1">
+                        {% if lectures %}
+
+                        <a class="pb-3 h6 nav-link active bg-secondary text-white rounded mx-1"
+                            href="{% url 'lectures_list' %}">
+                            <span class="material-icons text-white icon-center me-2">history_edu</span>Lezioni</a>
+
+                        {% else %}
+
+                        <a class="pb-3 h6 nav-link active shadow bg-primary text-white rounded mx-1"
+                            href="{% url 'lectures_list' %}">
+                            <span class="material-icons text-white icon-center me-2">history_edu</span> Lezioni</a>
+
+                        {% endif %}
+                    </li>
+
+                    <li class="nav-item mb-1">
+                        {% if new_lecture %}
+
+                        <a class="pb-3 h6 nav-link active bg-secondary text-white rounded mx-1"
+                            href="{% url 'new_lecture' %}">
+                            <span class="material-icons text-white icon-center me-2">add_circle</span>Nuova lezione</a>
+
+                        {% else %}
+
+                        <a class="pb-3 h6 nav-link shadow active bg-primary text-white rounded mx-1"
+                            href="{% url 'new_lecture' %}">
+                            <span class="material-icons text-white icon-center me-2">add_circle</span> Nuova lezione</a>
+
+                        {% endif %}
+                    </li>
+
+                    <li class="nav-item mb-1">
+
+                        <a class="pb-3 h6 nav-link shadow active bg-warning text-white rounded mx-1"
+                            href="{% url 'log_out' %}">
+                            <span class="material-icons text-white icon-center me-2">logout</span>Esci</a>
+
+                    </li>
+
+
+
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

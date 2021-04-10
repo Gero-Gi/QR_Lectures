@@ -1,0 +1,63 @@
+<div class="card shadow rounded-3">
+  <div class="card-body bg-white ">
+
+    <div class="container-fluid mx-0 px-0">
+      <div class="h4">
+
+        <span class="me-2 mb-5 text-primary fs-1 icon-center material-icons">contacts</span>Partecipanti
+
+      </div>
+
+      <table class="table table-hover table-borderless">
+        <thead class="mb-2">
+          <tr>
+
+            <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                badge
+              </span><span class="">Cognome</span></th>
+
+            <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                badge
+              </span><span class="">Nome</span></th>
+
+            <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                email
+              </span><span class="">Email</span></th>
+
+            <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                assignment_turned_in
+              </span><span class="">Stato</span></th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          {% for s in completed %}
+          <tr>
+            <td class="">{{s.first_name}}</td>
+            <td class="">{{s.last_name}}</td>
+            <td class="">{{s.email}}</td>
+            <td class="">
+              <span class="ms-5 text-success material-icons icon-center">check_circle</span>
+            </td>
+
+          </tr>
+          {% endfor %}
+
+          {% for s in start_only %}
+          <tr>
+            <td class="">{{s.first_name}}</td>
+            <td class="">{{s.last_name}}</td>
+            <td class="">{{s.email}}</td>
+            <td class="">
+              <span class="ms-5 text-danger material-icons icon-center">unpublished</span>
+            </td>
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

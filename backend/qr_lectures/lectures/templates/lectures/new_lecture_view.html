@@ -1,0 +1,61 @@
+{% extends 'lectures/base.html' %}
+
+{% block navbar %}
+{% include 'lectures/navbar.html' with title='Nuova Lezione' %}
+{% endblock navbar %}
+
+{% block sidebar %}
+{% include 'lectures/sidebar.html' with new_lecture=True %}
+{% endblock sidebar %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="card bg-white rounded-3 shadow">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                  <label for="id_name" class="form-label">Titolo</label>
+                  <input name='name' type="text" class="form-control" required_id="id_name">
+      
+                    <div class="h6 mt-2 text-danger">{{ form.name.errors | escape }}</div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="id_description">Descrizione</label>
+                    <textarea class="form-control" required_id="id_description" name="description" rows="3"></textarea>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label for="id_start_at" class="form-label">Data e orario</label>
+                    <input name='start_at' data-target="#start_at" type="text" class="form-control" required_id="id_start_at">
+        
+                      <div class="h6 mt-2 text-danger">{{ form.start_at.errors | escape }}</div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label for="id_department" class="form-label">Dipartimento</label>
+                    {{form.department}}
+                  </div>
+  
+                
+                <div class="mt-5 d-grid gap-2  mx-auto">
+                  <button class="btn btn-primary shadow text-white" type="submit">Crea</button>
+      
+                  <div class="h6 text-danger mt-2">{{ form.non_field_errors | escape }}</div>
+                </div>
+
+                
+
+              </form>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+{% endblock %}

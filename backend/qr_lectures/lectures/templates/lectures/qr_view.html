@@ -1,0 +1,41 @@
+{% extends 'lectures/base.html' %}
+{% load qr_code %}
+
+{% block navbar %}
+{% include 'lectures/navbar.html' with title=lecture.name %}
+{% endblock navbar %}
+
+{% block sidebar %}
+{% include 'lectures/sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="card shadow rounded-3">
+        <div class="card-header">
+            {{info}}
+        </div>
+        <div class="card-body text-center">
+            <img src="{% qr_url_from_text qr size=50 %}" alt="start QR">
+        </div>
+    </div>
+
+    
+
+</div>
+
+<script>
+    function reload(){
+        location.reload();
+        console.log('Updated')
+    }
+
+
+    setInterval(reload, 30*1000)
+</script>
+
+
+{% endblock %}
+

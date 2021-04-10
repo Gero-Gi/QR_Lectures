@@ -1,0 +1,69 @@
+<div class="card shadow rounded-3 h-100">
+    <div class="card-body">
+        <div class="container-fluid h-100">
+
+            {% if not lecture.is_completed %}
+            {% if not lecture.started_at %}
+            <div class="d-flex flex-column align-content-center">
+                <form method="post" name="start" class="d-grid gap-2 mb-3">
+                    {% csrf_token %}
+                    <button class="btn btn-primary shadow mx-0 fw-bold" name="start" type="submit">
+                        <span class="material-icons text-white icon-btn">play_circle_filled</span>Inizia</button>
+                </form>
+                {% endif %}
+
+                {% if lecture.started_at and not lecture.ended_at %}
+                <form method="post" name="end" class="d-grid gap-2 mb-3">
+                    {% csrf_token %}
+                    <button class="btn btn-primary shadow mx-0 fw-bold" name="end" type="submit">
+                        <span class="material-icons text-white icon-btn">stop</span>Termina</button>
+                </form>
+                {% endif %}
+
+                {% endif %}
+
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                {% if lecture.started_at %}
+
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary mx-0 shadow fw-bold" name="start" type="submit">
+                        <span class="material-icons text-white icon-btn">qr_code</span>Inizio</button>
+                </div>
+
+                {% if lecture.ended_at %}
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary shadow mx-0 fw-bold" name="start" type="submit">
+                        <span class="material-icons text-white icon-btn">qr_code</span>Termine</button>
+                </div>
+                {% endif %}
+
+                {% endif %}
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

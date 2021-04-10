@@ -1,0 +1,56 @@
+{% extends 'lectures/base.html' %}
+
+{% block navbar %}
+{% include 'lectures/navbar.html' with title='Dashboard' %}
+{% endblock navbar %}
+
+{% block sidebar %}
+{% include 'lectures/sidebar.html' with dashboard=True %}
+{% endblock sidebar %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row py-auto row-cols-1 row-cols-md-2 g-4 ">
+        <div class="col mt-0 mb-3">
+            {% include 'lectures/chart.html' with id=1 chart=eng_chart %}
+        </div>
+        <div class="col mt-0 mb-3">
+            {% include 'lectures/engagement_table.html' with lectures=top_eng %}
+
+        </div>
+
+
+    </div>
+
+
+    <div class="row row-cols-1 row-cols-md-1 g-4 mb-3">
+
+        <div class="col">
+            {% include 'lectures/upcoming_lectures.html' with lectures=last %}
+
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+
+        <div class="col">
+            {% include 'lectures/stud_count_table.html' with lectures=top_eng %}
+
+        </div>
+        <div class="col">
+            {% include 'lectures/chart.html' with id=2 chart=stud_chart %}
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

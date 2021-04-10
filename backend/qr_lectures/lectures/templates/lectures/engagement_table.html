@@ -1,0 +1,34 @@
+{% load mathfilters %}
+<div class="card h-100 shadow rounded-3 border-0 overflow-hidden">
+    <div class="card-body">
+        <table class="table table-hover table-borderless">
+            <thead class="mb-2">
+              <tr>
+                <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                    history_edu
+                    </span><span class="">Lezioni</span></th>
+                <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+                  trending_up
+                  </span><span class=""> Egagement</span></th>
+                </tr>
+        
+            </thead>
+      
+            <tbody>
+                {% for l in lectures %}
+                <tr onclick="window.location='{% url "lecture" pk=l.pk %}';" class="clickable">
+                    <td class="">{{l.name}}</td>
+                    <td class="text-center">
+                        <div class="progress">
+                            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{l.engagement|floatformat:2|mul:100}}%;" >{{l.engagement|floatformat:2}}</div>
+                          
+                        </div>
+
+                        </td>
+                  </tr>
+                {% endfor %}
+             
+            </tbody>
+          </table>
+    </div>
+</div>

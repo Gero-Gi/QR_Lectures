@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="d-flex align-items-center justify-content-center min-vh-100">
+  <div class="container mx-auto">
+
+      <div class="row mb-5">
+        <div class="col-8 mx-auto">
+          <h1>
+            QR-Lectures
+            <small class="text-muted">/Accedi</small>
+          </h1>
+
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-8 mx-auto">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input name='username' type="email" class="form-control" required_id="id_username"
+              aria-describedby="emailHelp">
+
+              <div class="h6 mt-2 text-danger">{{ form.username.errors | escape }}</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" required_id="id_password">
+          </div>
+          <div class="h6 text-danger">{{ form.password.errors | escape }}</div>
+          <div class="mt-5 d-grid gap-2  mx-auto">
+            <button class="btn btn-outline-dark" type="submit">Accedi</button>
+
+            <div class="h6 text-danger mt-2">{{ form.non_field_errors | escape }}</div>
+          </div>
+        </form>
+      </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

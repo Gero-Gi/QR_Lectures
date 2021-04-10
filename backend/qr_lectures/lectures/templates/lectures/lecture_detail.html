@@ -1,0 +1,36 @@
+{% extends 'lectures/base.html' %}
+
+{% block navbar %}
+{% include 'lectures/navbar.html' with title=lecture.name %}
+{% endblock navbar %}
+
+{% block sidebar %}
+{% include 'lectures/sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row  mb-3">
+        <div class="col mt-0 mb-3">
+            {% include 'lectures/lecture_info.html' with lecture=lecture%}
+
+        </div>
+    </div>
+
+    {% if completed|length > 0 or start_only|length > 0 %}
+    <div class="row  px-3">
+        <div class="col mt-0 mb-3">
+            {% include 'lectures/students_list.html' with lecture=lecture completed=completed start_only=start_only %}
+
+        </div>
+    
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}

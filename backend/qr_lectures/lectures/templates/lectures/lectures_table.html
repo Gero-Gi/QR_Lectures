@@ -1,0 +1,27 @@
+<div class="card h-100 shadow rounded-3 border-0 overflow-hidden">
+    <div class="card-body">
+        <div class="h4 mb-3">Lezioni</div>
+        <table class="table table-hover table-borderless">
+            <thead>
+              <tr>
+                <th scope="col"><span class="material-icons ">
+                  history_edu
+                  </span></th>
+                <th scope="col"><span class="icon-center material-icons">
+                  recommend
+                  </span><span class="">Engagement</span></th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for l in lectures %}
+                <tr>
+                    <td class="">{{l.name}}</td>
+                    <td class="text-center">{{l.engagement|floatformat:2}}</td>
+                  
+                  </tr>
+                {% endfor %}
+             
+            </tbody>
+          </table>
+    </div>
+</div>

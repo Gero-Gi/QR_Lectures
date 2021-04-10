@@ -1,0 +1,51 @@
+<div class="card h-100 shadow rounded-3 border-0 overflow-hidden">
+  <div class="card-body bg-white ">
+
+    <div class="h4">
+      
+      <span class="me-2 mb-3 text-primary fs-1 icon-center material-icons">event</span>Prossimamente
+
+      <button onclick="window.location='{% url "new_lecture" %}';" class="btn btn-primary fw-bold float-end shadow ">
+        <span class="icon-center me-1 material-icons text-white">add_circle</span>Nuova lezione
+      </button>
+    </div>
+
+    <table class="table table-hover table-borderless">
+      <thead class="mb-2">
+        <tr>
+
+          <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+              history_edu
+            </span><span class="">Lezioni</span></th>
+
+          <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+              calendar_today
+            </span><span class="">Data</span></th>
+
+          <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+              schedule
+            </span><span class="">Inizio</span></th>
+
+          <th scope="col"><span class="me-2 text-primary icon-center material-icons">
+              place
+            </span><span class="">Dipartimento</span></th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+        {% for l in lectures %}
+        <tr onclick="window.location='{% url "lecture" pk=l.pk %}';" class="clickable">
+          <td class="">{{l.name}}</td>
+          <td class="">{{l.start_at.date}}</td>
+          <td class="">{{l.start_at.time}}</td>
+          <td class="">{{l.department|title}}</td>
+
+
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>

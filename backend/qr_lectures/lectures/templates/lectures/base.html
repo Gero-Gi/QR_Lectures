@@ -1,0 +1,51 @@
+{% include 'index.html' %}
+
+{% block body %}
+
+
+
+<div class="d-flex" id="wrapper">
+
+
+    
+    <!-- Sidebar -->
+    {% block sidebar %}
+    {% endblock sidebar %}
+
+
+    <!-- /#sidebar-wrapper -->
+
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div style="position: relative;">
+            <div style="position: relative;">
+                {% block navbar %}
+                {% endblock navbar %}
+
+                
+            </div>
+
+
+            <div style="position: absolute; top: 12rem;" class="container-fluid px-0">
+             
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+    $open = true;
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+{% endblock body %}
